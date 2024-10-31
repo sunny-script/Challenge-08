@@ -2,7 +2,7 @@
 import Vehicle from './Vehicle.js';
 import Wheel from './Wheel.js';
 
-// TODO: The Motorbike class should extend the Vehicle class
+// TODO: The Motorbike class should extend the Vehicle class DONE. Resources: Chris (tutor), Xpert Learning, ChatGPT
 class Motorbike extends Vehicle {
   vin: string;
   color: string;
@@ -46,8 +46,8 @@ class Motorbike extends Vehicle {
 
   override printDetails(): void {
     super.printDetails();
-    
-    const wheels = this.wheels.map((wheel:Wheel) => {
+
+    const wheels = this.wheels.map((wheel: Wheel) => {
       return `Size: ${wheel.getDiameter} inches, Brand: ${wheel.getTireBrand}`;
     }).join(`, `);
     console.log(`VIN: ${this.vin}`);

@@ -78,6 +78,9 @@ class Truck extends Vehicle implements AbleToTow{
   override printDetails(): void {
     super.printDetails();
 
+    const wheels = this.wheels.map((wheel:Wheel) => {
+      return `Size: ${wheel.getDiameter} inches, Brand: ${wheel.getTireBrand}`;
+    }).join(`, `);
     console.log(`VIN: ${this.vin}`);
     console.log(`Color: ${this.color}`);
     console.log(`Make: ${this.make}`);

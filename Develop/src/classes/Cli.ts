@@ -5,21 +5,28 @@ import Car from "./Car.js";
 import Motorbike from "./Motorbike.js";
 import Wheel from "./Wheel.js";
 
-const increaseMaxListeners = (maxListeners: 25): void => {
-  process.setMaxListeners(maxListeners);  
-};
+// const increaseMaxListeners = (maxListeners: 25): void => {
+//   process.setMaxListeners(maxListeners);  
+// };
 
+// console.log CREATE LOG FOR INCREMENT AND DECREMENT OF MAX LISTENERS
+
+async function inquirerPrompt(questions: any): Promise<any> {
+  return inquirer.prompt(questions);
+}
+
+type Vehicle = Car | Truck | Motorbike;
 // define the Cli class
 class Cli {
   // TODO: update the vehicles property to accept Truck and Motorbike objects as well DONE
   // TODO: You will need to use the Union operator to define additional types for the array DONE
   // TODO: See the AbleToTow interface for an example of how to use the Union operator DONE
-  vehicles: (Car | Truck | Motorbike)[];
+  vehicles: Vehicle[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
   // TODO: Update the constructor to accept Truck and Motorbike objects as well DONE
-  constructor(vehicles: (Car | Truck | Motorbike)[]) {
+  constructor(vehicles: Vehicle[]) {
     this.vehicles = vehicles;
   }
 
@@ -250,8 +257,8 @@ class Cli {
         },
         {
           type: 'input',
-          name: 'rearWheelDiameter',
           message: 'Enter Rear Wheel Diameter',
+          name: 'rearWheelDiameter',
         },
         {
           type: 'input',
@@ -261,8 +268,8 @@ class Cli {
       ])
       .then((answers) => {
         const motorbike = new Motorbike(
-          Cli.generateVin(),
           answers.color,
+          Cli.generateVin(),
           answers.make,
           answers.model,
           parseInt(answers.year),
@@ -284,7 +291,7 @@ class Cli {
 
   // method to find a vehicle to tow
   // TODO: add a parameter to accept a truck object
-  findVehicleToTow(): void {
+  findVehicleToTow(truck:Truck): void {
     inquirer
       .prompt([
         {
@@ -293,7 +300,7 @@ class Cli {
           message: 'Select a vehicle to tow',
           choices: this.vehicles.map((vehicle) => {
             return {
-              name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
+              name: `${truck.make} ${truck.model} can tow ${vehicle.make} ${vehicle.model}`,
               value: vehicle,
             };
           }),
@@ -305,7 +312,7 @@ class Cli {
 
         if (selectedVehicle instanceof Truck) {
           // if the selected vehicle is a truck, find a vehicle to tow
-          this.findVehicleToTow();
+          // this.findVehicleToTow();
           // perform actions on the truck after finding a vehicle to tow
           this.performActions();
           return;
@@ -329,12 +336,12 @@ class Cli {
             'Start vehicle',
             'Accelerate 5 MPH',
             'Decelerate 5 MPH',
-            'Stop vehicle',
             'Turn right',
             'Turn left',
             'Reverse',
             'Tow',
             'Wheelie',
+            'Stop vehicle',
             'Select or create another vehicle',
             'Exit',
           ],
@@ -402,7 +409,7 @@ class Cli {
         } else if (answers.action === 'Tow') {
           const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
           if (selectedVehicle instanceof Truck) {
-            this.findVehicleToTow();
+            this.findVehicleToTow(selectedVehicle);
             return;
           } else {
             console.log("Selected vehicle is not a truck and cannot tow.");

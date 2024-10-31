@@ -55,5 +55,13 @@ THEN I can perform additional actions until I choose to exit
 
 * Github repo: (https://github.com/sunny-script/Challenge-08)
 
+## Resources
+
+*Xpert Learning Assistant
+
+*ChatGPT
+
+*Chris the tutor!
+
 ---
 &copy; 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.

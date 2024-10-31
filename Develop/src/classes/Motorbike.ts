@@ -46,6 +46,10 @@ class Motorbike extends Vehicle {
 
   override printDetails(): void {
     super.printDetails();
+    
+    const wheels = this.wheels.map((wheel:Wheel) => {
+      return `Size: ${wheel.getDiameter} inches, Brand: ${wheel.getTireBrand}`;
+    }).join(`, `);
     console.log(`VIN: ${this.vin}`);
     console.log(`Color: ${this.color}`);
     console.log(`Make: ${this.make}`);
@@ -54,7 +58,7 @@ class Motorbike extends Vehicle {
     console.log(`Weight: ${this.weight} lbs`);
     console.log(`Top Speed: ${this.topSpeed} mph`);
     console.log(`Wheelie Capacity: ${this.make} ${this.model} can wheelie!`);
-    console.log(`Wheels: ${this.wheels}`);
+    console.log(`Wheels: ${wheels}`);
   }
 }
 // Export the Motorbike class as the default export

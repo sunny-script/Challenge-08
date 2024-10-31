@@ -51,7 +51,7 @@ THEN I can perform additional actions until I choose to exit
 
 ## For Review
 
-* VIDEO LINK TO COME
+* (https://drive.google.com/file/d/1H7B9FZFeh04MBGoxD7M-ptP_F3PhyIFW/view)
 
 * Github repo: (https://github.com/sunny-script/Challenge-08)
 

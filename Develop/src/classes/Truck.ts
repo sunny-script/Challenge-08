@@ -6,7 +6,7 @@ import Wheel from './Wheel.js';
 import AbleToTow from '../interfaces/AbleToTow.js';
 
 // TODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface DONE
-class Truck extends Vehicle implements AbleToTow{
+class Truck extends Vehicle implements AbleToTow {
   // TODO: Declare properties of the Truck class DONE
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity DONE
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number) DONE
@@ -34,7 +34,7 @@ class Truck extends Vehicle implements AbleToTow{
   ) {
     // TODO: The constructor should call the constructor of the parent class, Vehicle DONE
     super();
-    
+
     // TODO: The constructor should initialize the properties of the Truck class DONE
     this.vin = vin;
     this.color = color;
@@ -56,7 +56,7 @@ class Truck extends Vehicle implements AbleToTow{
   // TODO: Get the make an model of the vehicle if it exists DONE
   // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity DONE
   // TODO: If it is, log that the vehicle is being towed DONE
-  // TODO: If it is not, log that the vehicle is too heavy to be towed DONE
+  // TODO: If it is not, log that the vehicle is too heavy to be towed DONE. Resources: ChatGPT
   tow(vehicle: Truck | Motorbike | Car): void {
     const vehicleMake = vehicle.make;
     const vehicleModel = vehicle.model;
@@ -73,12 +73,12 @@ class Truck extends Vehicle implements AbleToTow{
   // TODO: Override the printDetails method from the Vehicle class DONE
   // TODO: The method should call the printDetails method of the parent class DONE
   // TODO: The method should log the details of the Truck DONE
-  // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels DONE
+  // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels DONE. Resources: Chris (tutor), Xpert Learning, ChatGPT
 
   override printDetails(): void {
     super.printDetails();
 
-    const wheels = this.wheels.map((wheel:Wheel) => {
+    const wheels = this.wheels.map((wheel: Wheel) => {
       return `Size: ${wheel.getDiameter} inches, Brand: ${wheel.getTireBrand}`;
     }).join(`, `);
     console.log(`VIN: ${this.vin}`);

@@ -5,11 +5,6 @@ import Car from "./Car.js";
 import Motorbike from "./Motorbike.js";
 import Wheel from "./Wheel.js";
 
-// const increaseMaxListeners = (maxListeners: 25): void => {
-//   process.setMaxListeners(maxListeners);  
-// };
-
-// console.log CREATE LOG FOR INCREMENT AND DECREMENT OF MAX LISTENERS
 
 async function inquirerPrompt(questions: any): Promise<any> {
   return inquirer.prompt(questions);
@@ -18,7 +13,7 @@ async function inquirerPrompt(questions: any): Promise<any> {
 type Vehicle = Car | Truck | Motorbike;
 // define the Cli class
 class Cli {
-  // TODO: update the vehicles property to accept Truck and Motorbike objects as well DONE
+  // TODO: update the vehicles property to accept Truck and Motorbike objects as well DONE. 
   // TODO: You will need to use the Union operator to define additional types for the array DONE
   // TODO: See the AbleToTow interface for an example of how to use the Union operator DONE
   vehicles: Vehicle[];
@@ -131,7 +126,7 @@ class Cli {
       ])
       .then((answers) => {
         const car = new Car(
-          // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
+          // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well! DONE
           Cli.generateVin(),
           answers.color,
           answers.make,
@@ -290,8 +285,8 @@ class Cli {
   }
 
   // method to find a vehicle to tow
-  // TODO: add a parameter to accept a truck object
-  findVehicleToTow(truck:Truck): void {
+  // TODO: add a parameter to accept a truck object. DONE. Resources: Chris (tutor), Xpert Learning, ChatGPT
+  findVehicleToTow(truck: Truck): void {
     inquirer
       .prompt([
         {
@@ -405,7 +400,7 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
-          // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
+          // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous. DONE. Resources: Xpert Learning, ChatGPT
         } else if (answers.action === 'Tow') {
           const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
           if (selectedVehicle instanceof Truck) {
@@ -414,7 +409,7 @@ class Cli {
           } else {
             console.log("Selected vehicle is not a truck and cannot tow.");
           }
-          // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+          // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike. DONE. Resources: Xpert Learning, ChatGPT
         } else if (answers.action === 'Wheelie') {
           const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
           if (selectedVehicle instanceof Motorbike) {
